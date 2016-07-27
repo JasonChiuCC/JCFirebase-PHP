@@ -19,8 +19,8 @@ class FirebaseCurl
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST,   $request_mode);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,  false);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($curl, CURLOPT_POSTFIELDS,      $jsonData);
         $output = curl_exec($curl);
-        var_dump(json_decode($output, true));          
+        echo $output;
     }
 }

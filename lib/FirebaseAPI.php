@@ -40,23 +40,30 @@ class FirebaseAPI
         $this->_storageBucket   = $config['storageBucket'];  
         
         # Init curl
-        $this->initCurl();
+        $this->_initCurl();
     }
     
     function __destruct() 
     {
         # Close curl
-        $this->closeCurl();
+        $this->_closeCurl();
     }    
     
-    public function initCurl()
+    private  function _initCurl()
     {
         FirebaseCurl::initCurl($this->_curl); 
     }
     
-    public function closeCurl()
+    private  function _closeCurl()
     { 
         FirebaseCurl::closeCurl($this->_curl); 
+    }
+    
+    private function execCurl($path, $arrayData = '', $request_mode)
+    {
+        $jsonData   = json_encode($arrayData);
+        $fullPath   = $this->_databaseURL.$path.".json?print=pretty";
+        FirebaseCurl::execCurl($this->_curl, $fullPath, $request_mode, $jsonData); 
     }
     
     /*
@@ -66,9 +73,7 @@ class FirebaseAPI
     */
     public function set($path, $arrayData)
     {
-        $jsonData  = json_encode($arrayData);
-        $path = $this->_databaseURL.$path.".json";
-        FirebaseCurl::execCurl($this->_curl,$path, "PUT", $jsonData); 
+        $this->execCurl($path, $arrayData, "PUT");
     }
     
     /*
@@ -78,9 +83,7 @@ class FirebaseAPI
     */    
     public function update($path, $arrayData)
     {
-        $jsonData  = json_encode($arrayData);
-        $path = $this->_databaseURL.$path.".json";
-        FirebaseCurl::execCurl($this->_curl,$path, "PATCH", $jsonData); 
+        $this->execCurl($path, $arrayData, "PATCH");
     }
     
     /*
@@ -90,26 +93,18 @@ class FirebaseAPI
     */    
     public function push($path, $arrayData)
     {
-        $jsonData  = json_encode($arrayData);
-        $path = $this->_databaseURL.$path.".json";
-        FirebaseCurl::execCurl($this->_curl,$path, "POST", $jsonData); 
-    }       
+        $this->execCurl($path, $arrayData, "POST");
+    }
+    
+    /*
+     Descript:
+     REST call "DELETE", JavaScript SDK call "remove"
+     Remove data from the specified Firebase database reference
+    */    
+    public function remove($path)
+    {
+        $this->execCurl($path, "", "DELETE ");
+    }      
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
