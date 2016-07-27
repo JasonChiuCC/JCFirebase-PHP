@@ -3,15 +3,24 @@ namespace Firebase;
 
 class FirebaseCurl
 {
-    function __construct($request,$jsonData) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,     $request);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,    true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,    false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,        $jsonData);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
+    public static function initCurl(&$curl)
+    {
+        $curl = curl_init();
+    }
+    
+    public static function closeCurl(&$curl)
+    {
+        curl_close($curl);
+    }
+    
+    public static function execCurl(&$curl, $path, $request_mode, $jsonData)
+    {
+        curl_setopt($curl, CURLOPT_URL, $path);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST,   $request_mode);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER,  true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,  false);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonData);
+        $output = curl_exec($curl);
+        var_dump(json_decode($output, true));          
     }
 }
