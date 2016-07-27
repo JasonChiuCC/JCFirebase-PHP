@@ -1,22 +1,18 @@
 [![JCFirebase-PHP](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/logo.png "JCFirebase-PHP")](https://github.com/JasonChiuCC/JCFirebase-PHP)
 
-# 介紹
+## 介紹
 
-JCFirebase-PHP 是一款使用 PHP 語言的函示庫
+JCFirebase-PHP 是一款使用 PHP 語言的函示庫，將 Firebase Realtime Database 的 REST API 包裝起來
 
-將 Firebase Realtime Database 的 REST API 包裝起來
+你可以輕鬆的對 Firebase Realtime Database 做控制，例如儲存資料、更新資料、刪除資料以及取出資料
 
-你可以輕鬆的對 Firebase Realtime Database 做控制
-
-例如儲存資料、更新資料、刪除資料以及取出資料
-
-### 安裝
+## 安裝
 
 為了方便及模組化，此函示庫使用 Composer 來安裝
 
-### 使用
+## 使用
 
-### 授權條款
+## 授權條款
 
 ```
 Copyright (C) 2016 JasonChiuCC
