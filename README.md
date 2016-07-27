@@ -1,13 +1,12 @@
-# JCFirebase-PHP
+### JCFirebase-PHP
 
 PHP Firebase REST API.
 
-## 安裝 (Installation)
+### 安裝 【Installation】
 
+### 使用 【Usage】
 
-## 使用 (Usage)
-
-## 授權條款 (License)
+### 授權條款 【License】
 
 Copyright (C) 2016 JasonChiuCC
 
