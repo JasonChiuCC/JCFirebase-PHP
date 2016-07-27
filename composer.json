@@ -1,0 +1,20 @@
+{
+    "name": "jasonchiucc/jcfirebase-php",
+    "description": "For firebase realtime db REST API",
+    "keywords": ["firebase","realtime db","REST"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name" : "JasonChiuCC",
+            "email": "jasonchiucc@gmail.com"
+            "homepage": "http://jasonchiucc.github.io/",
+            "role": "Developer"            
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "classmap": ["lib"]
+    }       
+}
