@@ -3,10 +3,10 @@ namespace Firebase;
 
 class FirebaseCurl
 {
-    public static function printResult($result, $firebaseSetting)
+    public static function printResult($result, $setting)
     {
-        if( $firebaseSetting['silent']      == 1){ return 0; }
-        if( $firebaseSetting['prettyPrint'] == 1)
+        if( strcmp( $setting['print'], 'silent') == 0 ){ return 0; }  
+        if( strcmp( $setting['print'], 'pretty') == 0 )
         {
             echo "<pre>";
             $json = json_decode($result);

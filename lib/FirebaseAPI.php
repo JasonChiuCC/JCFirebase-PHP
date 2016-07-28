@@ -3,12 +3,6 @@ namespace Firebase;
 
 require_once __DIR__ . '/FirebaseCurl.php';
 
-function ls($data){
-    echo "<pre>";
-    print_r($data);
-    echo "</pre>";
-}
-
 class FirebaseAPI
 {
     # Firebase realtime parameter
@@ -60,8 +54,8 @@ class FirebaseAPI
 
     private  function _initSetting()
     {
-        $this->_setting['silent']       = 0;
-        $this->_setting['prettyPrint']  = 0;
+        $this->_setting['print']    = null;
+        $this->_setting['shallow']  = null;
     }
 
     private  function _initCurl()
@@ -77,22 +71,46 @@ class FirebaseAPI
     private function execCurl($path, $arrayData = '', $request_mode)
     {
         $jsonData   = json_encode($arrayData);
-        $fullPath   = $this->_databaseURL.$path.".json?";
+        $fullPath   = $this->_databaseURL.$path.".json?".http_build_query($this->_setting);
         FirebaseCurl::execCurl($this->_curl, $fullPath, $request_mode, $jsonData, $this->_setting);
     }
-
     /*================================================================================
-       Firebase setting
-      ================================================================================ */
-    public function setSilent($bool)
-    {
-        $this->_setting['silent']       = $bool ? 1 : 0;
-    }
-    public function setPrettyPrint($bool)
-    {
-        $this->_setting['prettyPrint']  = $bool ? 1 : 0;
-    }
+       Firebase parameter setting
+      ================================================================================ */ 
+    /* Set parameter */
+    public function setApiKey       ($str){ $this->_apiKey          = $str; }
+    public function setAuthDomain   ($str){ $this->_authDomain      = $str; }     
+    public function setDatabaseURL  ($str){ $this->_databaseURL     = $str; }    
+    public function setStorageBucket($str){ $this->_storageBucket   = $str; }  
 
+    /* Get parameter */
+    public function getApiKey       (){ return $this->_apiKey;          }      
+    public function getAuthDomain   (){ return $this->_authDomain;      }       
+    public function getDatabaseURL  (){ return $this->_databaseURL;     }      
+    public function getStorageBucket(){ return $this->_storageBucket;   }        
+      
+    /*================================================================================
+       Firebase url setting
+      ================================================================================ */
+    public function setPrintMode($mode)
+    {
+        switch ($mode) {
+            case "silent":
+                $this->_setting['print'] = "silent"; break;
+            case "pretty":
+                $this->_setting['print'] = "pretty"; break;
+            case "default":
+                $this->_setting['print'] = null;     break;
+            default:
+                $this->_setting['print'] = null; 
+        }
+    }
+    
+    public function setShallow($bool)
+    {
+        $this->_setting['shallow'] = $bool ? "true" : null ;
+    }  
+    
     /*================================================================================
        Firebase REST API
       ================================================================================ */
@@ -147,6 +165,16 @@ class FirebaseAPI
         );
         $this->execCurl($path, $arrayData, "PUT");
     }
+    
+    /*
+     Descript:
+     REST call "GET"
+     Read data from our Firebase database
+    */
+    public function get($path)
+    {
+        $this->execCurl($path, "", "GET");
+    }    
 }
 
 
