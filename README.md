@@ -6,7 +6,7 @@ JCFirebase-PHP is a library written by PHP ,it wrapper Firebase Realtime Databas
 
 You can easily use this library to control Firebase Realtime Database, for example save data、update data、delete data or get data.
 
-If you have any problem when using this library,please fell free to ask me.
+If you have any problem when using this library,please free feel to ask me.
 
 [中文說明參考](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/README_zh-tw.md)
 
@@ -23,11 +23,28 @@ composer require jasonchiucc/jcfirebase-php dev-master
 
 ## Usag
 
+Before use this library, please change your Firebase database rule like below
+
+Enter [Firebase console](https://console.firebase.google.com/) > ProjectName > Database > Rules
+
+More database rules setting please [reference here](https://firebase.google.com/docs/database/security/quickstart#sample-rules)
+
+```
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+```
+
 ### 『Initialization』
 
 Enter [Firebase console](https://console.firebase.google.com/) > ProjectName > Add Firebase to your application
 
 ```php
+require 'vendor/autoload.php';
+
 $config = array(
     "apiKey"        => "Your Database API Key",
     "authDomain"    => "Yourfirebaseproject.firebaseapp.com",
