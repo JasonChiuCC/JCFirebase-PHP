@@ -36,7 +36,6 @@ $firebase = new Firebase\FirebaseAPI($config);
 Set 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_133441.png)
 
 ```php
-# Set example
 $arrayData = array(
     "Developer" => array(
         "name"  => "Jason",
@@ -45,6 +44,54 @@ $arrayData = array(
 );
 $firebase->set("/Users",$arrayData);
 ```
+
+Set 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134124.png)
+
+```php
+$name   = 'JasonChiu';
+$year   = '26';
+$firebase->set("/Users/Developer/name", $name);
+$firebase->set("/Users/Developer/year", $year);
+```
+
+Update 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134249.png)
+
+```php
+$arrayData = array(
+    "nickname" => "JC"
+);
+$firebase->update("/Users/Developer",$arrayData);
+```
+
+Update 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134457.png)
+
+```php
+$arrayData = array(
+    "Developer/nickname"        => "JJ",
+    "ProjectManager/nickname"   => "Lin"
+);
+$firebase->update("/Users",$arrayData);
+```
+
+Push 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_135427.png)
+
+```php
+$arrayData = array(
+    "Author"  => "Sharon",
+    "Time"    => "2016"
+);
+$firebase->push("/Posts",$arrayData);
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
