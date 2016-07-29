@@ -37,6 +37,11 @@ class FirebaseCurl
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,  false);
         curl_setopt($curl, CURLOPT_POSTFIELDS,      $jsonData);
         $result = curl_exec($curl);
-        self::printResult($result, $firebaseSetting);
+        if(!curl_errno($curl))
+        {
+            /*$info = curl_getinfo($curl);*/
+            self::printResult($result, $firebaseSetting);
+        }
+        return $result;
     }
 }

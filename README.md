@@ -10,7 +10,33 @@ JCFirebase-PHP 是一款使用 PHP 語言的函示庫，將 Firebase Realtime Da
 
 為了方便及模組化，此函示庫使用 Composer 來安裝
 
+```
+cd <your_project>
+composer require jasonchiucc/jcfirebase-php
+```
+
 ## 使用
+
+### 初始化
+
+進入 [Firebase console](https://console.firebase.google.com/) > 點選 ProjectName > 點選將 Firebase 加入您的網路應用程式 > 填入需要欄位
+
+```
+$config = array(
+    "apiKey"        => "你的 Database API Key",
+    "authDomain"    => "Yourfirebaseproject.firebaseapp.com",
+    "databaseURL"   => "https://Yourfirebaseproject.firebaseio.com",
+    "storageBucket" => "Yourfirebaseproject.appspot.com",    
+);
+$firebase = new Firebase\FirebaseAPI($config);
+```
+
+
+
+
+
+
+
 
 ## 授權條款
 

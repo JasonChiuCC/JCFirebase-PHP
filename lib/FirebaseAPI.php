@@ -68,11 +68,16 @@ class FirebaseAPI
         FirebaseCurl::closeCurl($this->_curl);
     }
 
-    private function execCurl($path, $arrayData = '', $request_mode)
+    private function execCurl($path, $arrayData = '', $request_mode, $query = '')
     {
         $jsonData   = json_encode($arrayData);
-        $fullPath   = $this->_databaseURL.$path.".json?".http_build_query($this->_setting);
-        FirebaseCurl::execCurl($this->_curl, $fullPath, $request_mode, $jsonData, $this->_setting);
+        $queryStr   = '';
+        if( $query != '')
+        {
+          $queryStr = "&".http_build_query($query);
+        }
+        $fullPath   = $this->_databaseURL.$path.".json?".http_build_query($this->_setting).$queryStr;
+        return FirebaseCurl::execCurl($this->_curl, $fullPath, $request_mode, $jsonData, $this->_setting);        
     }
     /*================================================================================
        Firebase parameter setting
@@ -121,7 +126,7 @@ class FirebaseAPI
     */
     public function set($path, $arrayData)
     {
-        $this->execCurl($path, $arrayData, "PUT");
+        return $this->execCurl($path, $arrayData, "PUT");
     }
 
     /*
@@ -131,7 +136,7 @@ class FirebaseAPI
     */
     public function update($path, $arrayData)
     {
-        $this->execCurl($path, $arrayData, "PATCH");
+        return $this->execCurl($path, $arrayData, "PATCH");
     }
 
     /*
@@ -141,7 +146,7 @@ class FirebaseAPI
     */
     public function push($path, $arrayData)
     {
-        $this->execCurl($path, $arrayData, "POST");
+        return $this->execCurl($path, $arrayData, "POST");
     }
 
     /*
@@ -151,7 +156,7 @@ class FirebaseAPI
     */
     public function remove($path)
     {
-        $this->execCurl($path, "", "DELETE ");
+        return $this->execCurl($path, "", "DELETE ");
     }
 
     /*
@@ -163,7 +168,7 @@ class FirebaseAPI
         $arrayData = array(
             ".sv"      => "timestamp",
         );
-        $this->execCurl($path, $arrayData, "PUT");
+        return $this->execCurl($path, $arrayData, "PUT");
     }
     
     /*
@@ -171,9 +176,9 @@ class FirebaseAPI
      REST call "GET"
      Read data from our Firebase database
     */
-    public function get($path)
+    public function get($path, $query = '')
     {
-        $this->execCurl($path, "", "GET");
+        return $this->execCurl($path, "", "GET", $query);
     }    
 }
 
