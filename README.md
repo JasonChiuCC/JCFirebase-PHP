@@ -1,4 +1,4 @@
-[![JCFirebase-PHP](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/logo.png "JCFirebase-PHP")](https://github.com/JasonChiuCC/JCFirebase-PHP)
+[![JCFirebase-PHP](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/logo.png "JCFirebase-PHP")](https://github.com/JasonChiuCC/JCFirebase-PHP)
 
 ## 介紹
 
@@ -17,7 +17,7 @@ composer require jasonchiucc/jcfirebase-php
 
 ## 使用
 
-### 初始化
+#### 初始化
 
 進入 [Firebase console](https://console.firebase.google.com/) > 點選 ProjectName > 點選將 Firebase 加入您的網路應用程式 > 填入需要欄位
 
