@@ -8,7 +8,7 @@ You can easily use this library to control Firebase Realtime Database, for examp
 
 If you have any problem when using this library,please fell free to ask me.
 
-[中文說明參考]()
+[中文說明參考](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/README_zh-tw.md)
 
 ## Installation
 
