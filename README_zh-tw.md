@@ -1,35 +1,29 @@
 [![JCFirebase-PHP](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/logo.png "JCFirebase-PHP")](https://github.com/JasonChiuCC/JCFirebase-PHP)
 
-## Introduction
+## 介紹
 
-JCFirebase-PHP is a library written by PHP ,it wrapper Firebase Realtime Database REST API
+JCFirebase-PHP 是一款使用 PHP 語言的函示庫，將 Firebase Realtime Database 的 REST API 包裝起來
 
-You can easily use this library to control Firebase Realtime Database, for example save data、update data、delete data or get data.
+你可以輕鬆的對 Firebase Realtime Database 做控制，例如儲存資料、更新資料、刪除資料以及取出資料
 
-If you have any problem when using this library,please fell free to ask me.
+## 安裝
 
-[中文說明參考]()
-
-## Installation
-
-For convin
-
-This library use Composer to install for convenience.
+為了方便及模組化，此函示庫使用 Composer 來安裝
 
 ```
 cd <your_project>
 composer require jasonchiucc/jcfirebase-php dev-master
 ```
 
-## Usag
+## 使用
 
-### 『Initialization』
+### 『初始化』
 
-Enter [Firebase console](https://console.firebase.google.com/) > ProjectName > Add Firebase to your application
+進入 [Firebase console](https://console.firebase.google.com/) > 點選 ProjectName > 點選將 Firebase 加入您的網路應用程式 > 填入需要欄位
 
 ```php
 $config = array(
-    "apiKey"        => "Your Database API Key",
+    "apiKey"        => "你的 Database API Key",
     "authDomain"    => "Yourfirebaseproject.firebaseapp.com",
     "databaseURL"   => "https://Yourfirebaseproject.firebaseio.com",
     "storageBucket" => "Yourfirebaseproject.appspot.com",    
@@ -37,9 +31,9 @@ $config = array(
 $firebase = new Firebase\FirebaseAPI($config);
 ```
 
-### 『Basic Operations』
+### 『基本操作』
 
-`Set` example，you can see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_133441.png)
+`Set` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_133441.png)
 
 ```php
 $arrayData = array(
@@ -51,7 +45,7 @@ $arrayData = array(
 $firebase->set("/Users",$arrayData);
 ```
 
-`Set` example,see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134124.png)
+`Set` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134124.png)
 
 ```php
 $name   = 'JasonChiu';
@@ -60,7 +54,7 @@ $firebase->set("/Users/Developer/name", $name);
 $firebase->set("/Users/Developer/year", $year);
 ```
 
-`Update` example,see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134249.png)
+`Update` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134249.png)
 
 ```php
 $arrayData = array(
@@ -69,7 +63,7 @@ $arrayData = array(
 $firebase->update("/Users/Developer",$arrayData);
 ```
 
-`Update` example,see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134457.png)
+`Update` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_134457.png)
 
 ```php
 $arrayData = array(
@@ -79,7 +73,7 @@ $arrayData = array(
 $firebase->update("/Users",$arrayData);
 ```
 
-`Push` example,see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_135427.png)
+`Push` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_135427.png)
 
 ```php
 $arrayData = array(
@@ -89,21 +83,21 @@ $arrayData = array(
 $firebase->push("/Posts",$arrayData);
 ```
 
-`Remove` example,see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_135958.png)
+`Remove` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_135958.png)
 
 ```php
 $firebase->remove("/Users/ProjectManager");
 ```
 
-`Set Server Values` example,see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_140130.png)
+`Set Server Values` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_140130.png)
 
 ```php
 $firebase->setSV("/CreateAt");
 ```
 
-`Filtering Data` example,see the [result](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_140615.png)
+`Filtering Data` 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_140615.png)
 
-Other setting you can [reference here](https://firebase.google.com/docs/database/rest/retrieve-data)
+其他參數設定[參考這裡](https://firebase.google.com/docs/database/rest/retrieve-data)
 
 ```php
 $firebase->setDatabaseURL("https://dinosaur-facts.firebaseio.com");
@@ -122,7 +116,7 @@ $query = array(
 $firebase->get("/scores",$query);
 ```
 
-### 『Other setting』
+### 『其他設定』
 
 ```php
 /* You can set silent,pretty,default */
@@ -145,7 +139,7 @@ $firebase->getDatabaseURL();
 $firebase->getStorageBucket();
 ```
 
-## License
+## 授權條款
 
 ```
 Copyright (C) 2016 JasonChiuCC
