@@ -33,6 +33,8 @@ $firebase = new Firebase\FirebaseAPI($config);
 
 ### 『基本操作』
 
+Set 範例，結果[如圖所示](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_133441.png)
+
 ```php
 # Set example
 $arrayData = array(
@@ -43,9 +45,6 @@ $arrayData = array(
 );
 $firebase->set("/Users",$arrayData);
 ```
-
-[![JCFirebase-PHP](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_133441.png "JCFirebase-PHP")](https://github.com/JasonChiuCC/JCFirebase-PHP)
-
 
 
 
