@@ -4,7 +4,9 @@
 
 JCFirebase-PHP is a library written by PHP ,it wrapper Firebase Realtime Database REST API
 
-You can easily use this library to control Firebase Realtime Database, for example save data、update data、delete data or get data.
+You can easily use this library to control Firebase Realtime Database
+
+For example save data、update data、delete data or get data.
 
 If you have any problem when using this library,please free feel to ask me.
 
@@ -12,9 +14,7 @@ If you have any problem when using this library,please free feel to ask me.
 
 ## Installation
 
-For convin
-
-This library use Composer to install for convenience.
+For convin,this library use Composer to install for convenience.
 
 ```
 cd <your_project>
