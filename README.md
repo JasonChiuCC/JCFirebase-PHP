@@ -12,7 +12,7 @@ JCFirebase-PHP 是一款使用 PHP 語言的函示庫，將 Firebase Realtime Da
 
 ```
 cd <your_project>
-composer require jasonchiucc/jcfirebase-php
+composer require jasonchiucc/jcfirebase-php dev-master
 ```
 
 ## 使用
