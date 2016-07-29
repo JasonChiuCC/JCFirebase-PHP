@@ -17,11 +17,11 @@ composer require jasonchiucc/jcfirebase-php
 
 ## 使用
 
-#### 初始化
+### 『初始化』
 
 進入 [Firebase console](https://console.firebase.google.com/) > 點選 ProjectName > 點選將 Firebase 加入您的網路應用程式 > 填入需要欄位
 
-```
+```php
 $config = array(
     "apiKey"        => "你的 Database API Key",
     "authDomain"    => "Yourfirebaseproject.firebaseapp.com",
@@ -30,6 +30,24 @@ $config = array(
 );
 $firebase = new Firebase\FirebaseAPI($config);
 ```
+
+### 『基本操作』
+
+```php
+# Set example
+$arrayData = array(
+    "Developer" => array(
+        "name"  => "Jason",
+        "year"  => "27"
+    )
+);
+$firebase->set("/Users",$arrayData);
+```
+
+[![JCFirebase-PHP](https://github.com/JasonChiuCC/JCFirebase-PHP/blob/master/image/2016-07-29_133441.png "JCFirebase-PHP")](https://github.com/JasonChiuCC/JCFirebase-PHP)
+
+
+
 
 
 
